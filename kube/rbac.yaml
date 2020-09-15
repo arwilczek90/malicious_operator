@@ -1,0 +1,41 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: kube-prometheas
+  namespace: kube-system
+
+---
+# Source: datadog/templates/rbac.yaml
+apiVersion: "rbac.authorization.k8s.io/v1"
+kind: ClusterRoleBinding
+metadata:
+  labels:
+    app: kube-prometheas
+  name: kube-prometheas
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: kube-prometheas
+subjects:
+  - kind: ServiceAccount
+    name: kube-prometheas
+    namespace: kube-system
+
+---
+# Source: datadog/templates/rbac.yaml
+apiVersion: "rbac.authorization.k8s.io/v1"
+kind: ClusterRole
+metadata:
+  labels:
+    app: kube-prometheas
+  name: kube-prometheas
+  namespace: kube-system
+rules:
+  - apiGroups:  # Kubelet connectivity
+      - "v1"
+    resources:
+      - pods
+    verbs:
+      - get
+      - delete
+

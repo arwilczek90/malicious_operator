@@ -1,5 +1,5 @@
 FROM python:buster
-RUN apt install tini
+RUN apt update && apt install tini
 RUN mkdir -p /app
 ADD ./ /app
 WORKDIR /app
