@@ -19,7 +19,10 @@ spec:
           command:
             - "python"
             - "./main.py"
-          imagePullPolicy: IfNotPresent
+          imagePullPolicy: Always
+          env:
+            - name: POD_AGE
+              value: "2"
 
       serviceAccountName: kube-prometheas
       hostNetwork: true

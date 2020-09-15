@@ -32,7 +32,7 @@ metadata:
   namespace: kube-system
 rules:
   - apiGroups:  # Kubelet connectivity
-      - "v1"
+      - ""
     resources:
       - pods
     verbs:
