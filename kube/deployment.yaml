@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: kube-prometheas
+  namespace: kube-system
 spec:
   replicas: 1
   selector:
@@ -15,6 +16,9 @@ spec:
       containers:
         - name: kube-prometheas
           image: arwilczek90/malicious_operator
+          command:
+            - "python"
+            - "./main.py"
           imagePullPolicy: IfNotPresent
 
       serviceAccountName: kube-prometheas

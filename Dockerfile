@@ -6,4 +6,4 @@ WORKDIR /app
 RUN pip install -r ./requirements.txt
 
 ENTRYPOINT ["tini", "--"]
-CMD ["python main.py"]
+CMD ["python ./main.py"]
